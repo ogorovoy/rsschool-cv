@@ -1,14 +1,113 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Example</title>
+    <title>Oleg Gorovoy CV</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="container">
+        <header>
+            <img src="https://github.com/ogorovoy/rsschool-cv/blob/rsschool-cv-html/me.jpg" alt="Oleg Gorovoy" class="profile-pic">
+            <h1>Oleg Gorovoy</h1>
+        </header>
+        
+        <section>
+            <h2>Contacts:</h2>
+            <ul>
+                <li>Email: xxx@gmail.com</li>
+                <li>Phone number: xxx-xxx-936</li>
+                <li>LinkedIn: <a href="http://linkedin.com/in/oleg-gorovoy-5865aa100">Oleg Gorovoy</a></li>
+            </ul>
+            <p>Personal data is anonymized in accordance with the GDPR. Hopefully enough accounts on LinkedIn</p>
+        </section>
+        
+        <section>
+            <h2>About me:</h2>
+            <p>I am 33 years old and have been living in Germany for many years. You can find more information on my LinkedIn profile. My passion for IT started many years ago. My first job was in technical support for computers and other devices. Then I worked as a system administrator in E-Commerce for two years. Currently, I am involved in software testing. Although JS was not previously part of my responsibilities and I know it on the surface, I decided to expand my employment competencies to remain in demand and grow in my profession.</p>
+        </section>
+        
+        <section>
+            <h2>Skills:</h2>
+            <ul>
+                <li>Splunk / Grafana</li>
+                <li>Java / Python</li>
+                <li>PHP</li>
+                <li>Powershell / Windows register</li>
+                <li>Git / GitLab</li>
+                <li>Pipelines / Runners / Airflow</li>
+                <li>MS Office 365</li>
+                <li>Jira / Confluence</li>
+                <li>SQL</li>
+                <li>Docker</li>
+                <li>Zabbix</li>
+                <li>etc.</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>Project Examples:</h2>
+            <ul>
+                <li><a href="https://github.com/ogorovoy/rsschool-cv">CV</a></li>
+                <li><a href="https://github.com/ogorovoy/CO2/">CO2</a></li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>Code Example:</h2>
+            <pre><code>
+url = 'https://app.rs.school/course/score?course=js-fe-preschool-2024q2'
+driver.get(url)
+time.sleep(3)
 
-<h1>Example</h1>
-<p>Example text.</p>
+login_button = driver.find_element(By.XPATH, '/html/body/div/main/div/div[2]/ul/li/span/button').click()
+time.sleep(5)
+login_input = driver.find_element(By.ID, 'login_field').send_keys(login)
+password_field = driver.find_element(By.ID, 'password').send_keys(password)
+sign_in = driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/main/div/div[3]/form/div/input[13]').click()
+time.sleep(10)
 
+def extract_github_links():
+    soup = BeautifulSoup(driver.page_source, 'html.parser')
+    links = [link['href'] for link in soup.find_all('a', href=True) if link['href'].startswith('https://github.com/')]
+    return links
+
+all_github_links = []
+
+for page in pages(1, 47):
+    page_link_xpath = f"//a[@rel='nofollow' and text()='{page}']"
+    try:
+        page_link = driver.find_element(By.XPATH, page_link_xpath).click()
+        time.sleep(5)
+        all_github_links.extend(extract_github_links())
+    except Exception as e:
+        print(f"not found link to page nr {page}: {e}")
+        continue
+data_file = 'data.csv'
+df = pd.DataFrame(all_github_links, columns=['GitHub Links'])
+df.to_csv(data_file, index=False)
+            </code></pre>
+        </section>
+        
+        <section>
+            <h2>Education:</h2>
+            <p>WSB Merito Wroclaw - Internal Security</p>
+        </section>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <ul class="footer-content">
+                <h2> created githab was in 2021</h2>
+                <a href="https://github.com/ogorovoy" class="github" target="_blank"></a>
+                <li>
+                    <a href="https://rs.school/courses/javascript-ru" class="rsschool" target="_blank">
+                        <img src="./assets/icons/rs-school-logo_02.svg" alt="RS School Logo" class="rs-logo">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+                
 </body>
 </html>
