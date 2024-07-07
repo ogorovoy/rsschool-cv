@@ -1,6 +1,6 @@
 # Oleg Gorovoy
 
-<img src="https://github.com/ogorovoy/rsschool-cv/blob/main/me.jpeg" width="150" style="float: right; margin-left: 20px;">
+<p><img src="https://github.com/ogorovoy/rsschool-cv/blob/rsschool-cv-html/me.jpg" width="150" style="float: right; margin-left: 20px;" alt="image" /></p>
 
 ## Contacts:
 - Email: xxx@gmail.com
